@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Trapiche Turismo - San Luis, Argentina</title>
+  <!-- Fuente Google Fonts -->
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap"
+  />
+  <!-- Íconos Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+  />
+  <style>
+    :root {
+      /* Nueva paleta de colores */
+      --bg-color: #f7f7fc;
+      --text-color: #2b2b2b;
+      --primary-color: #008080;      /* Verde azulado */
+      --secondary-color: #ff6b6b;    /* Rojo coral */
+      --accent-color: #ffcc00;       /* Amarillo vivo */
+      --heading-font: 'Poppins', sans-serif;
+      --body-font: 'Poppins', sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg-color);
+      color: var(--text-color);
+      font-family: var(--body-font);
+    }
+
+    /* ========= CABECERA / NAVBAR ========= */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: var(--primary-color);
+      z-index: 999;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+    }
+    header .logo {
+      color: #fff;
+      font-size: 1.4rem;
+      font-family: var(--heading-font);
+      text-decoration: none;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    header .logo i {
+      font-size: 1.3rem;
+      color: var(--accent-color);
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    nav ul li a:hover {
+      color: var(--accent-color);
+    }
+
+    /* ========= SECCIONES GENERALES ========= */
+    section {
+      width: 100%;
+      padding: 80px 20px;
+      max-width: 1400px;
+      margin: 0 auto;
+      position: relative;
+    }
+    /* Para compensar el header fijo */
+    .spacer {
+      height: 80px;
+      width: 100%;
+    }
+
+    /* ========= HERO PRINCIPAL ========= */
+    #hero {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background: url('https://source.unsplash.com/1600x900/?mountains') 
+                 no-repeat center/cover;
+      position: relative;
+      text-align: center;
+      color: #fff;
+    }
+    #hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.4);
+      z-index: 1;
+    }
+    #hero .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+      margin: 0 20px;
+    }
+    #hero h1 {
+      font-family: var(--heading-font);
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    #hero p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+    #hero .hero-btns a {
+      display: inline-block;
+      padding: 0.8rem 1.6rem;
+      border-radius: 2rem;
+      text-decoration: none;
+      margin: 0 0.5rem;
+      font-weight: 500;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+    .btn-primary {
+      background-color: var(--accent-color);
+      color: var(--text-color);
+    }
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      background-color: #ffd633;
+    }
+    .btn-secondary {
+      background-color: transparent;
+      border: 2px solid var(--accent-color);
+      color: #fff;
+    }
+    .btn-secondary:hover {
+      transform: translateY(-3px);
+      background-color: var(--accent-color);
+      color: var(--text-color);
+    }
+
+    /* ========= SECCIÓN: CONOCÉ TRAPICHE ========= */
+    #about h2 {
+      font-family: var(--heading-font);
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    #about .about-content {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      max-width: 800px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      padding: 2rem;
+    }
+
+    /* ========= SECCIÓN: LUGARES PARA VISITAR ========= */
+    #destinations h2 {
+      font-family: var(--heading-font);
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    .destinations-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    .destination-card {
+      background: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .destination-card:hover {
+      transform: translateY(-5px);
+    }
+    .destination-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+    .destination-card .card-body {
+      padding: 1rem;
+      flex: 1;
+    }
+    .destination-card .card-body h3 {
+      margin-bottom: 0.5rem;
+      font-family: var(--heading-font);
+      font-weight: 600;
+    }
+    .destination-card p {
+      line-height: 1.5;
+      margin-bottom: 1rem;
+    }
+    .features {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+    .features .feature {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.95rem;
+      color: var(--primary-color);
+    }
+
+    /* ========= SECCIÓN: IMPERDIBLES ========= */
+    #must-see h2 {
+      font-family: var(--heading-font);
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    .must-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px,1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    .must-item {
+      background: #fff;
+      padding: 1.2rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+    .must-item:hover {
+      transform: translateY(-5px);
+    }
+    .icon-circle {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: var(--secondary-color);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 1.2rem;
+    }
+
+    /* ========= SECCIÓN: CÓMO LLEGAR ========= */
+    #getting-there h2 {
+      font-family: var(--heading-font);
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    .map {
+      margin: 1.5rem auto;
+      max-width: 800px;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      height: 400px;
+    }
+    .map img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .transport-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    .transport-card {
+      background: #fff;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: transform 0.3s;
+    }
+    .transport-card:hover {
+      transform: translateY(-5px);
+    }
+    .transport-card .transport-icon {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      color: var(--primary-color);
+    }
+
+    /* ========= SECCIÓN: GALERÍA ========= */
+    #gallery h2 {
+      font-family: var(--heading-font);
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    .gallery-item {
+      height: 180px;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      cursor: pointer;
+      position: relative;
+      transition: transform 0.3s;
+    }
+    .gallery-item:hover {
+      transform: scale(1.02);
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: all 0.5s ease;
+    }
+
+    /* ========= SECCIÓN: CONTACTO ========= */
+    #contact h2 {
+      font-family: var(--heading-font);
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .contact-info, .contact-form {
+      background: #fff;
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .contact-info h3 {
+      margin-bottom: 1rem;
+      font-family: var(--heading-font);
+      font-size: 1.3rem;
+      color: var(--secondary-color);
+    }
+    .contact-detail {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 1rem;
+    }
+    .contact-detail i {
+      color: var(--primary-color);
+      font-size: 1.2rem;
+    }
+    .contact-detail a {
+      text-decoration: none;
+      color: var(--text-color);
+      transition: color 0.3s;
+    }
+    .contact-detail a:hover {
+      color: var(--primary-color);
+    }
+    .social-media {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .social-media a {
+      width: 40px;
+      height: 40px;
+      background: var(--secondary-color);
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s, background-color 0.3s;
+    }
+    .social-media a:hover {
+      transform: translateY(-4px);
+      background: var(--accent-color);
+      color: var(--text-color);
+    }
+    /* Form */
+    .contact-form h3 {
+      color: var(--secondary-color);
+      margin-bottom: 1rem;
+      font-size: 1.3rem;
+      font-family: var(--heading-font);
+    }
+    .form-group {
+      margin-bottom: 1rem;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 0.5rem;
+      font-family: var(--body-font);
+      font-size: 0.95rem;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: 2px solid var(--accent-color);
+    }
+    button.btn-submit {
+      background: var(--primary-color);
+      color: #fff;
+      border: none;
+      padding: 0.6rem 1.5rem;
+      border-radius: 2rem;
+      cursor: pointer;
+      font-weight: 500;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+    button.btn-submit:hover {
+      background-color: #00a1a1;
+      transform: translateY(-3px);
+    }
+
+    /* ========= FOOTER ========= */
+    footer {
+      background: var(--dark);
+      color: #fff;
+      padding: 2rem;
+      text-align: center;
+    }
+    footer p {
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    /* ANIMACIONES SIMPLES DE APARICIÓN (DISTINTAS A LAS ANTERIORES) */
+    [data-animate] {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: 0.6s ease;
+    }
+    [data-animate].active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+
+<body>
+  <!-- HEADER / NAVBAR -->
+  <header>
+    <a href="#" class="logo">
+      <i class="fas fa-mountain"></i> Trapiche Turismo
+    </a>
+    <nav>
+      <ul>
+        <li><a href="#hero">Inicio</a></li>
+        <li><a href="#about">Conocé Trapiche</a></li>
+        <li><a href="#destinations">Lugares</a></li>
+        <li><a href="#must-see">Imperdibles</a></li>
+        <li><a href="#getting-there">Cómo Llegar</a></li>
+        <li><a href="#gallery">Galería</a></li>
+        <li><a href="#contact">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- HERO PRINCIPAL -->
+  <section id="hero">
+    <div class="hero-content">
+      <h1>Viví la Aventura <br/>en Trapiche, San Luis</h1>
+      <p>
+        Naturaleza, historia y aventura se unen en un destino imperdible.
+        ¡Sumérgete en la magia de las sierras puntanas!
+      </p>
+      <div class="hero-btns">
+        <a href="#destinations" class="btn-primary">¿Qué Ver?</a>
+        <a href="#must-see" class="btn-secondary">Actividades</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ESPACIO PARA EVITAR QUE EL HEADER CUBRA LA SECCIÓN SIGUIENTE -->
+  <div class="spacer"></div>
+
+  <!-- SECCIÓN: CONOCÉ TRAPICHE -->
+  <section id="about">
+    <h2 data-animate>Conocé Trapiche</h2>
+    <div class="about-content" data-animate>
+      <p>
+        <strong>Su nombre</strong> proviene de la actividad minera que marcó el origen
+        del pueblo: un antiguo molino ("trapiche") utilizado para pulverizar oro
+        extraído en <em>La Carolina</em>.
+      </p>
+      <p>
+        Hoy, este rincón serrano se transformó en uno de los destinos turísticos
+        más elegidos de San Luis por su combinación perfecta de ríos cristalinos,
+        diques majestuosos, historia y paisajes incomparables.
+      </p>
+    </div>
+  </section>
+
+  <!-- SECCIÓN: LUGARES PARA VISITAR -->
+  <section id="destinations">
+    <h2 data-animate>Lugares para Visitar</h2>
+    <div class="destinations-grid" data-animate>
+      <!-- Destination 1 -->
+      <div class="destination-card">
+        <img
+          src="/api/placeholder/600/400"
+          alt="Dique La Florida"
+        />
+        <div class="card-body">
+          <h3>Dique La Florida</h3>
+          <p>
+            Majestuoso espejo de agua rodeado de cerros y puentes.
+            Una gran obra de ingeniería de los años cincuenta.
+          </p>
+          <div class="features">
+            <div class="feature">
+              <i class="fas fa-water"></i>
+              <span>Paraíso de la náutica y la pesca</span>
+            </div>
+            <div class="feature">
+              <i class="fas fa-hiking"></i>
+              <span>Deportes acuáticos y senderismo</span>
+            </div>
+            <div class="feature">
+              <i class="fas fa-camera"></i>
+              <span>Miradores panorámicos</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Destination 2 -->
+      <div class="destination-card">
+        <img
+          src="/api/placeholder/600/400"
+          alt="Dique Río Grande"
+        />
+        <div class="card-body">
+          <h3>Dique Río Grande</h3>
+          <p>
+            Inaugurado en 1997, el Dique Antonio Esteban Agüero
+            contiene las aguas del Río Grande, creando un
+            imponente espejo de agua.
+          </p>
+          <div class="features">
+            <div class="feature">
+              <i class="fas fa-mountain"></i>
+              <span>Postales incomparables</span>
+            </div>
+            <div class="feature">
+              <i class="fas fa-fish"></i>
+              <span>Excelente para pesca deportiva</span>
+            </div>
+            <div class="feature">
+              <i class="fas fa-tree"></i>
+              <span>Naturaleza serrana</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Destination 3 -->
+      <div class="destination-card">
+        <img
+          src="/api/placeholder/600/400"
+          alt="Siete Cajones"
+        />
+        <div class="card-body">
+          <h3>Siete Cajones</h3>
+          <p>
+            A solo 3 km del ingreso, un circuito natural con profundos
+            pozos erosionados por el río.
+          </p>
+          <div class="features">
+            <div class="feature">
+              <i class="fas fa-tree"></i>
+              <span>Caldén Centenario</span>
+            </div>
+            <div class="feature">
+              <i class="fas fa-water"></i>
+              <span>Pozos para refrescarse</span>
+            </div>
+            <div class="feature">
+              <i class="fas fa-hiking"></i>
+              <span>Senderos y aventura</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Destination 4 -->
+      <div class="destination-card">
+        <img
+          src="/api/placeholder/600/400"
+          alt="Riocito"
+        />
+        <div class="card-body">
+          <h3>Riocito</h3>
+          <p>
+            Arroyo de aguas cálidas y cristalinas, rodeado de cantera
+            de lajas y naturaleza virgen.
+          </p>
+          <div class="features">
+            <div class="feature">
+              <i class="fas fa-gem"></i>
+              <span>Canteras de lajas</span>
+            </div>
+            <div class="feature">
+              <i class="fas fa-tint"></i>
+              <span>Aguas cristalinas</span>
+            </div>
+            <div class="feature">
+              <i class="fas fa-leaf"></i>
+              <span>Naturaleza virgen</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Destination 5 -->
+      <div class="destination-card">
+        <img
+          src="/api/placeholder/600/400"
+          alt="Paso del Rey"
+        />
+        <div class="card-body">
+          <h3>Paso del Rey</h3>
+          <p>
+            Alberga las ruinas de la capilla más antigua de San Luis,
+            declarada Monumento Histórico Nacional.
+          </p>
+          <div class="features">
+            <div class="feature">
+              <i class="fas fa-landmark"></i>
+              <span>Sitio histórico cultural</span>
+            </div>
+            <div class="feature">
+              <i class="fas fa-history"></i>
+              <span>Testimonio colonial (1795)</span>
+            </div>
+            <div class="feature">
+              <i class="fas fa-camera"></i>
+              <span>Paisajes fotográficos</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Destination 6 -->
+      <div class="destination-card">
+        <img
+          src="/api/placeholder/600/400"
+          alt="Los Tapiales"
+        />
+        <div class="card-body">
+          <h3>Los Tapiales</h3>
+          <p>
+            Monumento dedicado a Juan Pascual Pringles,
+            “héroe máximo puntano”, en un paraje serrano único.
+          </p>
+          <div class="features">
+            <div class="feature">
+              <i class="fas fa-monument"></i>
+              <span>Tributo al héroe puntano</span>
+            </div>
+            <div class="feature">
+              <i class="fas fa-book-open"></i>
+              <span>Historia de San Luis</span>
+            </div>
+            <div class="feature">
+              <i class="fas fa-mountain"></i>
+              <span>Maravilla serrana</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN: IMPERDIBLES -->
+  <section id="must-see">
+    <h2 data-animate>Imperdibles del Trapiche</h2>
+    <div class="must-grid" data-animate>
+      <div class="must-item">
+        <div class="icon-circle"><i class="fas fa-check"></i></div>
+        <div>
+          Recorrer el <strong>Circuito de Turismo Religioso</strong>,
+          conociendo la historia y cultura local.
+        </div>
+      </div>
+      <div class="must-item">
+        <div class="icon-circle"><i class="fas fa-check"></i></div>
+        <div>
+          Excursiones a los <strong>Saltos de Agua</strong> como
+          La Negra Libre y La Escalerilla.
+        </div>
+      </div>
+      <div class="must-item">
+        <div class="icon-circle"><i class="fas fa-check"></i></div>
+        <div>
+          Practicar actividades náuticas en el <strong>Dique La Florida</strong>,
+          desde kayak hasta windsurf.
+        </div>
+      </div>
+      <div class="must-item">
+        <div class="icon-circle"><i class="fas fa-check"></i></div>
+        <div>
+          Asistir a <strong>Festivales de Verano</strong> y
+          eventos culturales que celebran las tradiciones puntanas.
+        </div>
+      </div>
+      <div class="must-item">
+        <div class="icon-circle"><i class="fas fa-check"></i></div>
+        <div>
+          Visitar el <strong>Paseo Artesanal Martín Grillo</strong>
+          para comprar productos locales y arte regional.
+        </div>
+      </div>
+      <div class="must-item">
+        <div class="icon-circle"><i class="fas fa-check"></i></div>
+        <div>
+          Ecoturismo: Conocer la <strong>Estación de Piscicultura</strong>
+          y la Reserva Florofaunística en La Florida.
+        </div>
+      </div>
+      <div class="must-item">
+        <div class="icon-circle"><i class="fas fa-check"></i></div>
+        <div>
+          Capturar imágenes inolvidables en <strong>miradores panorámicos</strong>
+          con vistas a toda la sierra.
+        </div>
+      </div>
+      <div class="must-item">
+        <div class="icon-circle"><i class="fas fa-check"></i></div>
+        <div>
+          Descubrir <strong>rincones tranquilos</strong> entre las sierras,
+          ideales para descansar y reconectar con la naturaleza.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN: CÓMO LLEGAR -->
+  <section id="getting-there">
+    <h2 data-animate>Cómo Llegar</h2>
+    <div class="map" data-animate>
+      <img
+        src="/api/placeholder/1200/600"
+        alt="Mapa de ubicación"
+      />
+    </div>
+    <div class="transport-container" data-animate>
+      <div class="transport-card">
+        <div class="transport-icon">
+          <i class="fas fa-car"></i>
+        </div>
+        <h3>En Vehículo</h3>
+        <p>
+          Acceso por Ruta Provincial 9 o Ruta Provincial 20.
+          Caminos en excelente estado y señalizados.
+        </p>
+      </div>
+      <div class="transport-card">
+        <div class="transport-icon">
+          <i class="fas fa-bus"></i>
+        </div>
+        <h3>Transporte Público</h3>
+        <p>
+          Servicio regular de colectivos interurbanos
+          desde la terminal de San Luis.
+        </p>
+      </div>
+      <div class="transport-card">
+        <div class="transport-icon">
+          <i class="fas fa-parking"></i>
+        </div>
+        <h3>Estacionamiento</h3>
+        <p>
+          Amplias zonas de estacionamiento disponibles
+          en los principales atractivos turísticos.
+        </p>
+      </div>
+      <div class="transport-card">
+        <div class="transport-icon">
+          <i class="fas fa-campground"></i>
+        </div>
+        <h3>Camping y Alojamiento</h3>
+        <p>
+          Diversas opciones de hospedaje, desde campings
+          hasta cabañas y hosterías.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN: GALERÍA -->
+  <section id="gallery">
+    <h2 data-animate>Galería de Imágenes</h2>
+    <div class="gallery-grid" data-animate>
+      <div class="gallery-item">
+        <img src="/api/placeholder/600/400" alt="Trapiche 1" />
+      </div>
+      <div class="gallery-item">
+        <img src="/api/placeholder/600/400" alt="Trapiche 2" />
+      </div>
+      <div class="gallery-item">
+        <img src="/api/placeholder/600/400" alt="Trapiche 3" />
+      </div>
+      <div class="gallery-item">
+        <img src="/api/placeholder/600/400" alt="Trapiche 4" />
+      </div>
+      <div class="gallery-item">
+        <img src="/api/placeholder/600/400" alt="Trapiche 5" />
+      </div>
+      <div class="gallery-item">
+        <img src="/api/placeholder/600/400" alt="Trapiche 6" />
+      </div>
+      <div class="gallery-item">
+        <img src="/api/placeholder/600/400" alt="Trapiche 7" />
+      </div>
+      <div class="gallery-item">
+        <img src="/api/placeholder/600/400" alt="Trapiche 8" />
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN: CONTACTO -->
+  <section id="contact">
+    <h2 data-animate>Contacto</h2>
+    <div class="contact-grid" data-animate>
+      <!-- Información de contacto -->
+      <div class="contact-info">
+        <h3>Oficina de Turismo Trapiche</h3>
+        <div class="contact-detail">
+          <i class="fas fa-map-marker-alt"></i>
+          <div>
+            <a href="https://g.co/kgs/ncRLhxo" target="_blank">
+              Oficina 2: Ver en Google Maps
+            </a>
+            <br/>
+            <a href="https://g.co/kgs/1U2SVjX" target="_blank">
+              Oficina 1: Ver en Google Maps
+            </a>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <i class="fas fa-phone"></i>
+          <a href="tel:+542664452000">(266) 445-2000</a>
+        </div>
+        <div class="contact-detail">
+          <i class="fab fa-whatsapp"></i>
+          <a href="https://wa.me/542664891372">(266) 489-1372</a>
+        </div>
+        <div class="contact-detail">
+          <i class="fas fa-envelope"></i>
+          <a href="mailto:info@trapicheturismo.gob.ar">
+            info@trapicheturismo.gob.ar
+          </a>
+        </div>
+        <div class="social-media">
+          <a
+            href="https://www.instagram.com/secretariadeturismoeltrapiche?igsh=MWI1dDV3MDVjOXRjeg=="
+            target="_blank"
+          >
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="#" target="_blank">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="#" target="_blank">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="#" target="_blank">
+            <i class="fab fa-youtube"></i>
+          </a>
+        </div>
+      </div>
+      <!-- Formulario de contacto -->
+      <div class="contact-form">
+        <h3>Envíanos un mensaje</h3>
+        <form>
+          <div class="form-group">
+            <label for="name">Nombre</label>
+            <input type="text" id="name" placeholder="Tu nombre" />
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="Tu email" />
+          </div>
+          <div class="form-group">
+            <label for="subject">Asunto</label>
+            <input type="text" id="subject" placeholder="Asunto del mensaje" />
+          </div>
+          <div class="form-group">
+            <label for="message">Mensaje</label>
+            <textarea id="message" rows="4" placeholder="¿En qué podemos ayudarte?"></textarea>
+          </div>
+          <button type="submit" class="btn-submit">
+            <i class="fas fa-paper-plane"></i> Enviar Mensaje
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>
+      © 2025 Trapiche Turismo - San Luis, Argentina. Todos los derechos reservados.
+    </p>
+  </footer>
+
+  <!-- SCRIPT PARA ANIMACIONES DE APARICIÓN AL HACER SCROLL -->
+  <script>
+    // Observa cada sección con data-animate y las activa al aparecer
+    const animatedElements = document.querySelectorAll('[data-animate]');
+    const observerOptions = {
+      threshold: 0.3,
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    animatedElements.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
