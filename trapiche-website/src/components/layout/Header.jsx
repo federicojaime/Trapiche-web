@@ -33,7 +33,7 @@ const Header = () => {
           <span className={`text-2xl font-bold bg-clip-text text-transparent transition-all duration-300 ${
             scrollY > 50 ? 'bg-gradient-to-r from-trapiche-blue to-trapiche-green-light' : 'bg-gradient-to-r from-white to-gray-300'
           }`}>
-            Trapiche
+            El Trapiche
           </span>
           <span className={`text-sm font-medium transition-colors duration-300 ${
             scrollY > 50 ? 'text-gray-600' : 'text-white'
