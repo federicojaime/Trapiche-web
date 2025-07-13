@@ -19,7 +19,7 @@ const About = () => {
                         className="w-full lg:w-1/2"
                     >
                         <span className="text-trapiche-blue text-sm font-semibold uppercase tracking-wider">Nuestro destino</span>
-                        <h2 className="text-3xl md:text-4xl font-bold mt-2 mb-6">Conocé Trapiche</h2>
+                        <h2 className="text-3xl md:text-4xl font-bold mt-2 mb-6">Conocé El Trapiche</h2>
                         <div className="h-1 w-20 bg-trapiche-blue rounded-full mb-6"></div>
 
                         <p className="text-lg text-gray-700 mb-8 leading-relaxed">
@@ -71,7 +71,7 @@ const About = () => {
                             <div className="absolute -top-5 -left-5 w-full h-full border-2 border-trapiche-blue rounded-xl"></div>
                             <img
                                 src={`${import.meta.env.BASE_URL}src/assets/images/panoramica.jpg`} 
-                                alt="Vista panorámica de Trapiche"
+                                alt="Vista panorámica de El Trapiche"
                                 className="w-full h-auto rounded-xl shadow-xl relative z-10"
                             />
 
@@ -98,7 +98,7 @@ const About = () => {
                         transition={{ duration: 0.6 }}
                         className="bg-gray-50 p-6 rounded-lg shadow-sm text-center"
                     >
-                        <span className="text-3xl md:text-4xl font-bold text-trapiche-blue">+500</span>
+                        <span className="text-3xl md:text-4xl font-bold text--blue">+500</span>
                         <p className="text-gray-600 mt-2">Visitantes mensuales</p>
                     </motion.div>
 

@@ -13,7 +13,7 @@ const Destinations = () => {
             descripcion: 'Majestuoso espejo de agua rodeado por cerros, miradores y un increíble sistema de puentes y murallas.',
             icono: '🌊',
             color: 'bg-blue-600',
-            categoria: 'diques'
+            categoria: 'diques' // Agregada la categoría
         },
         {
             id: 'riogrande',
@@ -21,7 +21,7 @@ const Destinations = () => {
             descripcion: 'Inaugurado en 1997, contiene las aguas del Rio Grande con miradores que brindan incomparables vistas.',
             icono: '🏞️',
             color: 'bg-emerald-600',
-            categoria: 'diques'
+            categoria: 'diques' // Agregada la categoría
         },
         {
             id: 'siete-cajones',
@@ -29,7 +29,7 @@ const Destinations = () => {
             descripcion: 'Profundos pozos entre rocas, formados por la erosión del río a través del tiempo.',
             icono: '♒',
             color: 'bg-amber-600',
-            categoria: 'naturaleza'
+            categoria: 'naturaleza' // Agregada la categoría
         },
         {
             id: 'riocito',
@@ -37,7 +37,7 @@ const Destinations = () => {
             descripcion: 'Arroyo de cálidas y cristalinas aguas que le da nombre al paraje. Zona de canteras de lajas.',
             icono: '💧',
             color: 'bg-cyan-600',
-            categoria: 'naturaleza'
+            categoria: 'naturaleza' // Agregada la categoría
         },
         {
             id: 'paso-del-rey',
@@ -45,7 +45,7 @@ const Destinations = () => {
             descripcion: 'Conserva las ruinas de la capilla más antigua de San Luis, declarada Monumento Histórico Nacional.',
             icono: '⛪',
             color: 'bg-yellow-600',
-            categoria: 'historico'
+            categoria: 'historico' // Agregada la categoría
         },
         {
             id: 'los-tapiales',
@@ -53,7 +53,7 @@ const Destinations = () => {
             descripcion: 'Monumento a Juan Pascual Pringles, héroe puntano que participó en la gesta libertadora.',
             icono: '🏛️',
             color: 'bg-red-600',
-            categoria: 'historico'
+            categoria: 'historico' // Agregada la categoría
         }
     ];
 
@@ -82,7 +82,7 @@ const Destinations = () => {
                     <h2 className="text-3xl md:text-4xl font-bold mt-2 mb-6">Lugares para Visitar</h2>
                     <div className="h-1 w-20 bg-trapiche-blue mx-auto rounded-full mb-6"></div>
                     <p className="text-lg text-gray-700">
-                        Descubrí los tesoros naturales e históricos que hacen de Trapiche un lugar único en San Luis.
+                        Descubrí los tesoros naturales e históricos que hacen de El Trapiche un lugar único en San Luis.
                     </p>
                 </motion.div>
 

@@ -5,7 +5,7 @@ import { useNavigation } from '../../context/NavigationContext';
 
 const menuItems = [
   { id: 'inicio', label: 'Inicio' },
-  { id: 'sobre-trapiche', label: 'Sobre Trapiche' },
+  { id: 'sobre-trapiche', label: 'Sobre El Trapiche' },
   { id: 'destinos', label: 'Destinos' },
   { id: 'galeria', label: 'Galería' },
   { id: 'contacto', label: 'Contacto' }

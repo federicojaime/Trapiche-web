@@ -6,7 +6,7 @@ const HowToArrive = () => {
   // Función para abrir WhatsApp con el lugar específico como mensaje
   const openWhatsApp = () => {
     // Construir el mensaje con el nombre del lugar
-    const message = `Hola, me interesa más información sobre los alojamientos en Trapiche.`;
+    const message = `Hola, me interesa más información sobre los alojamientos en El Trapiche.`;
     // Codificar el mensaje para URL
     const encodedMessage = encodeURIComponent(message);
     // Construir la URL para WhatsApp
@@ -103,7 +103,7 @@ const HowToArrive = () => {
           >
             <div className="bg-gray-200 rounded-xl overflow-hidden shadow-lg relative">
               <iframe
-                title="Mapa de Trapiche"
+                title="Mapa de El Trapiche"
                 className="w-full h-96"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d53493.36437224799!2d-66.23742465820312!3d-33.12073483400905!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95d43baccfdb5de1%3A0x45d7ac536eed568a!2sEl%20Trapiche%2C%20San%20Luis!5e0!3m2!1ses!2sar!4v1680712339682!5m2!1ses!2sar"
                 style={{ border: 0 }}

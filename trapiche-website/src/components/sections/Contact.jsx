@@ -18,7 +18,7 @@ const Contact = () => {
                         <h2 className="text-3xl md:text-4xl font-bold mt-2 mb-6">Contacto</h2>
                         <div className="h-1 w-20 bg-trapiche-blue mx-auto rounded-full mb-6"></div>
                         <p className="text-lg text-gray-700 max-w-3xl mx-auto">
-                            ¿Tienes alguna pregunta sobre Trapiche? No dudes en contactarnos.
+                            ¿Tienes alguna pregunta sobre El Trapiche? No dudes en contactarnos.
                         </p>
                     </motion.div>
 
@@ -85,7 +85,7 @@ const Contact = () => {
                                 </svg>
                             </div>
                             <h3 className="text-xl font-bold mb-2">Oficina de Turismo</h3>
-                            <p className="text-gray-600 mb-4">Visítanos en Trapiche</p>
+                            <p className="text-gray-600 mb-4">Visítanos en El Trapiche</p>
                             <a href="https://g.co/kgs/ncRLhxo" target="_blank" rel="noopener noreferrer" className="text-trapiche-blue font-medium hover:underline block mb-2 group inline-flex items-center">
                                 Oficina 1
                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1 transform transition-transform group-hover:translate-x-1" viewBox="0 0 20 20" fill="currentColor">

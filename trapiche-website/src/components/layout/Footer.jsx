@@ -30,7 +30,7 @@ const Footer = () => {
             >
               <h3 className="text-xl font-bold mb-4 flex items-center">
                 <span className="text-2xl bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-green-300 mr-2">
-                  Trapiche
+                 El Trapiche
                 </span>
                 Turismo
               </h3>
@@ -77,7 +77,7 @@ const Footer = () => {
                     onClick={() => scrollToSection('sobre-trapiche')}
                     className="text-gray-400 hover:text-white transition-colors flex items-center group"
                   >
-                    <span className="transform transition-transform group-hover:translate-x-1">Sobre Trapiche</span>
+                    <span className="transform transition-transform group-hover:translate-x-1">Sobre El Trapiche</span>
                   </button>
                 </li>
                 <li>
@@ -152,7 +152,7 @@ const Footer = () => {
               transition={{ duration: 0.6, delay: 0.3 }}
             >
               <h3 className="text-lg font-bold mb-4">Newsletter</h3>
-              <p className="text-gray-400 mb-4">Suscríbete para recibir novedades y promociones de Trapiche.</p>
+              <p className="text-gray-400 mb-4">Suscríbete para recibir novedades y promociones de El Trapiche.</p>
 
               <div className="flex">
                 <input
@@ -176,7 +176,7 @@ const Footer = () => {
         </div>
 
         <div className="mt-12 pt-8 border-t border-gray-800 text-center text-gray-400">
-          <p>© {currentYear} Trapiche Turismo - San Luis, Argentina.</p>
+          <p>© {currentYear} El Trapiche Turismo - San Luis, Argentina.</p>
 
           <div className="flex items-center justify-center mt-2">
             <span className="mr-2">Desarrollado por</span>

@@ -20,7 +20,7 @@ const Gallery = () => {
     { src: `${import.meta.env.BASE_URL}src/assets/images/gallery/trapiche-3.jpg`, alt: 'Siete Cajones' },
     { src: `${import.meta.env.BASE_URL}src/assets/images/gallery/trapiche-6.jpg`, alt: 'Los Tapiales' },
     { src: `${import.meta.env.BASE_URL}src/assets/images/gallery/trapiche-7.jpg`, alt: 'Paisaje Serrano' },
-    { src: `${import.meta.env.BASE_URL}src/assets/images/gallery/trapiche-8.jpg`, alt: 'Atardecer en Trapiche' },
+    { src: `${import.meta.env.BASE_URL}src/assets/images/gallery/trapiche-8.jpg`, alt: 'Atardecer en El Trapiche' },
     { src: `${import.meta.env.BASE_URL}src/assets/images/gallery/trapiche-9.jpg`, alt: 'Salto de agua La Negra Libre' },
     { src: `${import.meta.env.BASE_URL}src/assets/images/gallery/trapiche-10.jpg`, alt: 'Paseo Artesanal' },
   ];
@@ -47,10 +47,10 @@ const Gallery = () => {
           className="max-w-3xl mx-auto text-center mb-16"
         >
           <span className="text-trapiche-blue text-sm font-semibold uppercase tracking-wider">Imágenes</span>
-          <h2 className="text-3xl md:text-4xl font-bold mt-2 mb-6">Galería de Trapiche</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mt-2 mb-6">Galería de El Trapiche</h2>
           <div className="h-1 w-20 bg-trapiche-blue mx-auto rounded-full mb-6"></div>
           <p className="text-lg text-gray-700">
-            Explorá la belleza de Trapiche a través de nuestra colección de imágenes.
+            Explorá la belleza de El Trapiche a través de nuestra colección de imágenes.
           </p>
         </motion.div>
 

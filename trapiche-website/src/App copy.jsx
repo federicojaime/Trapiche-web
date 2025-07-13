@@ -88,7 +88,7 @@ const TrapicheWebsite = () => {
             className="flex items-center space-x-2"
           >
             <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-green-500">
-              Trapiche
+              El Trapiche
             </span>
             <span className="text-sm font-medium text-gray-600">San Luis, Argentina</span>
           </motion.div>
@@ -176,7 +176,7 @@ const TrapicheWebsite = () => {
             className="max-w-2xl"
           >
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">
-              Trapiche, San Luis
+              El Trapiche, San Luis
             </h1>
             <p className="text-lg md:text-xl text-gray-100 mb-8">
               Naturaleza, historia y aventura en un solo lugar
@@ -230,7 +230,7 @@ const TrapicheWebsite = () => {
             transition={{ duration: 0.6 }}
             className="max-w-3xl mx-auto text-center"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">Conocé Trapiche</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">Conocé El Trapiche</h2>
             <p className="text-lg text-gray-700 mb-8 leading-relaxed">
               Su nombre proviene de la actividad minera que marcó el origen del pueblo: un antiguo molino ("trapiche") utilizado para pulverizar oro extraído en La Carolina.
             </p>
@@ -253,7 +253,7 @@ const TrapicheWebsite = () => {
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-6">Lugares para Visitar</h2>
             <p className="text-lg text-gray-700">
-              Descubre los tesoros naturales e históricos que hacen de Trapiche un lugar único.
+              Descubre los tesoros naturales e históricos que hacen de El Trapiche un lugar único.
             </p>
           </motion.div>
           
@@ -299,7 +299,7 @@ const TrapicheWebsite = () => {
             transition={{ duration: 0.6 }}
             className="max-w-3xl mx-auto text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">Imperdibles del Trapiche</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">Imperdibles del El Trapiche</h2>
             <p className="text-lg opacity-90">
               Experiencias que no te puedes perder durante tu visita.
             </p>
@@ -409,7 +409,7 @@ const TrapicheWebsite = () => {
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-6">Galería de imágenes</h2>
             <p className="text-lg text-gray-700">
-              Explora la belleza de Trapiche a través de nuestras imágenes.
+              Explora la belleza de El Trapiche a través de nuestras imágenes.
             </p>
           </motion.div>
           
@@ -425,7 +425,7 @@ const TrapicheWebsite = () => {
                 className="overflow-hidden rounded-lg shadow-md aspect-square relative cursor-pointer"
               >
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                  <span className="text-white font-medium">Trapiche {item}</span>
+                  <span className="text-white font-medium">El Trapiche {item}</span>
                 </div>
                 <img 
                   src={`/api/placeholder/600/600`} 
@@ -518,7 +518,7 @@ const TrapicheWebsite = () => {
                   </svg>
                 </div>
                 <h3 className="text-xl font-bold mb-2">Oficina de Turismo</h3>
-                <p className="text-gray-600 mb-4">Visítanos en Trapiche</p>
+                <p className="text-gray-600 mb-4">Visítanos en El Trapiche</p>
                 <a href="https://g.co/kgs/ncRLhxo" target="_blank" rel="noopener noreferrer" className="text-blue-600 font-medium hover:underline block mb-2">Oficina 1</a>
                 <a href="https://g.co/kgs/1U2SVjX" target="_blank" rel="noopener noreferrer" className="text-blue-600 font-medium hover:underline">Oficina 2</a>
               </motion.div>
@@ -584,7 +584,7 @@ const TrapicheWebsite = () => {
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div>
-              <h3 className="text-xl font-bold mb-4">Trapiche Turismo</h3>
+              <h3 className="text-xl font-bold mb-4">El Trapiche Turismo</h3>
               <p className="text-gray-400">
                 San Luis, Argentina<br />
                 Naturaleza, historia y aventura
@@ -633,7 +633,7 @@ const TrapicheWebsite = () => {
           </div>
           
           <div className="mt-12 pt-8 border-t border-gray-800 text-center text-gray-400">
-            <p>© {new Date().getFullYear()} Trapiche Turismo - San Luis, Argentina. Todos los derechos reservados.</p>
+            <p>© {new Date().getFullYear()} El Trapiche Turismo - San Luis, Argentina. Todos los derechos reservados.</p>
           </div>
         </div>
       </footer>

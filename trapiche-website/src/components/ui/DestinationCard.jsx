@@ -15,7 +15,7 @@ const DestinationCard = ({ lugar, index }) => {
   // Función para abrir WhatsApp con el lugar específico como mensaje
   const openWhatsApp = () => {
     // Construir el mensaje con el nombre del lugar
-    const message = `Hola, me interesa más información sobre ${lugar.nombre} en Trapiche.`;
+    const message = `Hola, me interesa más información sobre ${lugar.nombre} en El Trapiche.`;
     // Codificar el mensaje para URL
     const encodedMessage = encodeURIComponent(message);
     // Construir la URL para WhatsApp

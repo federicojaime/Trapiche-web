@@ -1,4 +1,4 @@
-// tailwind.config.js - Configuración con paleta otoñal
+// tailwind.config.js - Configuración con paleta invernal
 /** @type {import('tailwindcss').Config} */
 export default {
     content: [
@@ -10,68 +10,74 @@ export default {
             colors: {
                 'trapiche-blue': '#E7AD5C',
 
-                // Nueva paleta otoñal
-                'autumn': {
-                    '50': '#faf6f2',
-                    '100': '#f2e8dc',
-                    '200': '#e5ceb3',
-                    '300': '#d7ae86',
-                    '400': '#c89064',
-                    '500': '#bd784a',
-                    '600': '#b16641',
-                    '700': '#934f38',
-                    '800': '#774033',
-                    '900': '#63372e',
-                    '950': '#351c18',
+                // Nueva paleta invernal
+                'winter': {
+                    '50': '#f8fafc',
+                    '100': '#f1f5f9',
+                    '200': '#e2e8f0',
+                    '300': '#cbd5e1',
+                    '400': '#94a3b8',
+                    '500': '#64748b',
+                    '600': '#475569',
+                    '700': '#334155',
+                    '800': '#1e293b',
+                    '900': '#0f172a',
+                    '950': '#020617',
                 },
-                'maple': {
-                    '50': '#fff2ed',
-                    '100': '#ffe2d4',
-                    '200': '#ffc2a9',
-                    '300': '#ff9c74',
-                    '400': '#fe6d3c',
-                    '500': '#fc4f19',
-                    '600': '#ed3a0a',
-                    '700': '#c42b0a',
-                    '800': '#9c2410',
-                    '900': '#7f2211',
-                    '950': '#450e07',
+                'ice': {
+                    '50': '#f0f9ff',
+                    '100': '#e0f2fe',
+                    '200': '#bae6fd',
+                    '300': '#7dd3fc',
+                    '400': '#38bdf8',
+                    '500': '#0ea5e9',
+                    '600': '#0284c7',
+                    '700': '#0369a1',
+                    '800': '#075985',
+                    '900': '#0c4a6e',
+                    '950': '#082f49',
                 },
-                'forest': {
-                    '50': '#f2f7f3',
-                    '100': '#e0ebe2',
-                    '200': '#c2d7c7',
-                    '300': '#9abaA2',
-                    '400': '#719880',
-                    '500': '#547e65',
-                    '600': '#416550',
-                    '700': '#365343',
-                    '800': '#2e4338',
-                    '900': '#273831',
-                    '950': '#141f1a',
+                'snow': {
+                    '50': '#ffffff',
+                    '100': '#fefefe',
+                    '200': '#fafafa',
+                    '300': '#f5f5f5',
+                    '400': '#efefef',
+                    '500': '#e5e5e5',
+                    '600': '#d4d4d4',
+                    '700': '#a3a3a3',
+                    '800': '#737373',
+                    '900': '#525252',
+                    '950': '#404040',
                 },
             },
             backgroundImage: {
-                'autumn-texture': "url('/src/assets/images/autumn-texture.png')",
-                'leaves-pattern': "url('/src/assets/images/leaves-pattern.svg')",
-                'hero-autumn': "url('/src/assets/images/hero-autumn.jpg')",
+                'winter-texture': "url('/src/assets/images/winter-texture.png')",
+                'snow-pattern': "url('/src/assets/images/snow-pattern.svg')",
+                'hero-winter': "url('/src/assets/images/hero-winter.jpg')",
             },
             boxShadow: {
-                'autumn': '0 4px 20px -2px rgba(111, 63, 21, 0.25)',
+                'winter': '0 4px 20px -2px rgba(59, 130, 246, 0.25)',
+                'frost': '0 8px 32px 0 rgba(31, 38, 135, 0.37)',
             },
             animation: {
-                'fall': 'fall 15s linear infinite',
-                'sway': 'sway 6s ease-in-out infinite',
+                'snow-fall': 'snowfall 8s linear infinite',
+                'frost': 'frost 4s ease-in-out infinite',
+                'shimmer': 'shimmer 2s ease-in-out infinite alternate',
             },
             keyframes: {
-                fall: {
-                    '0%': { transform: 'translateY(-10%) rotate(0deg)', opacity: 0 },
+                snowfall: {
+                    '0%': { transform: 'translateY(-10vh) translateX(0px)', opacity: 0 },
                     '10%': { opacity: 1 },
-                    '100%': { transform: 'translateY(100vh) rotate(360deg)', opacity: 0 },
+                    '100%': { transform: 'translateY(100vh) translateX(100px)', opacity: 0 },
                 },
-                sway: {
-                    '0%, 100%': { transform: 'rotate(-3deg)' },
-                    '50%': { transform: 'rotate(3deg)' },
+                frost: {
+                    '0%, 100%': { transform: 'scale(1)' },
+                    '50%': { transform: 'scale(1.05)' },
+                },
+                shimmer: {
+                    '0%': { opacity: 0.5 },
+                    '100%': { opacity: 1 },
                 },
             },
         },
