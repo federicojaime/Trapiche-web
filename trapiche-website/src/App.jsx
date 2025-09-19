@@ -1,10 +1,11 @@
-// App.jsx - Configuración de rutas principal
+// App.jsx - Configuración de rutas con página de contacto
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import LandingPage from './components/pages/LandingPage';
 import TourismPage from './components/pages/TourismPage';
 import VecinoPage from './components/pages/VecinoPage';
+import ContactPage from './components/pages/ContactPage';
 import './App.css';
 
 function App() {
@@ -12,17 +13,23 @@ function App() {
     <HelmetProvider>
       <BrowserRouter>
         <Routes>
-          {/* Página principal con opciones */}
-          <Route path="/" element={<LandingPage />} />
+          {/* Página principal ahora es directamente turismo */}
+          <Route path="/" element={<TourismPage />} />
           
-          {/* Página de turismo (toda la web actual) */}
+          {/* Página de contacto completa */}
+          <Route path="/contacto" element={<ContactPage />} />
+          
+          {/* Página de portal (anterior landing page) */}
+          <Route path="/portal" element={<LandingPage />} />
+          
+          {/* Página de turismo (mantener para compatibilidad) */}
           <Route path="/turismo" element={<TourismPage />} />
           
           {/* Página de vecino (en construcción) */}
           <Route path="/vecino" element={<VecinoPage />} />
           
-          {/* Ruta de fallback - redirige a la página principal */}
-          <Route path="*" element={<LandingPage />} />
+          {/* Ruta de fallback - redirige a la página de turismo */}
+          <Route path="*" element={<TourismPage />} />
         </Routes>
       </BrowserRouter>
     </HelmetProvider>
