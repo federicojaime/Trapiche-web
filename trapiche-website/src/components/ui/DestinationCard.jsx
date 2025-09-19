@@ -1,6 +1,14 @@
-// Modificación de components/ui/DestinationCard.jsx
+// components/ui/DestinationCard.jsx
 import React from 'react';
 import { motion } from 'framer-motion';
+
+// IMPORTS DE IMÁGENES COMO VARIABLES
+import floridaImage from '../../assets/images/florida-autumn.jpg';
+import riograndeImage from '../../assets/images/riogrande-autumn.jpg';
+import sieteCajonesImage from '../../assets/images/siete-cajones-autumn.jpg';
+import riocitoImage from '../../assets/images/riocito-autumn.jpg';
+import pasoDelReyImage from '../../assets/images/paso-del-rey-autumn.jpg';
+import losTapialesImage from '../../assets/images/los-tapiales-autumn.jpg';
 
 const DestinationCard = ({ lugar, index }) => {
   // Mapa de colores otoñales para cada tipo de lugar
@@ -11,6 +19,16 @@ const DestinationCard = ({ lugar, index }) => {
   };
 
   const autumnColor = autumnColorMap[lugar.categoria] || 'bg-autumn-600';
+
+  // MAPEO DE IMÁGENES USANDO VARIABLES IMPORTADAS
+  const imageMap = {
+    'florida': floridaImage,
+    'riogrande': riograndeImage,
+    'siete-cajones': sieteCajonesImage,
+    'riocito': riocitoImage,
+    'paso-del-rey': pasoDelReyImage,
+    'los-tapiales': losTapialesImage,
+  };
 
   // Función para abrir WhatsApp con el lugar específico como mensaje
   const openWhatsApp = () => {
@@ -39,7 +57,7 @@ const DestinationCard = ({ lugar, index }) => {
           whileHover={{ scale: 1.1 }}
           transition={{ duration: 0.7 }}
           style={{
-            backgroundImage: `url(${import.meta.env.BASE_URL}src/assets/images/${lugar.id}-autumn.jpg)`
+            backgroundImage: `url(${imageMap[lugar.id] || floridaImage})`
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-autumn-900/60 to-transparent"></div>

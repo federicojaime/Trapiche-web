@@ -1,11 +1,19 @@
 // components/layout/Footer.jsx
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import { useNavigation } from '../../context/NavigationContext';
+// IMPORT DE IMAGEN COMO VARIABLE
+import codeoIcon from '../../assets/images/icon.png';
 
 const Footer = () => {
   const { scrollToSection } = useNavigation();
+  const navigate = useNavigate();
   const currentYear = new Date().getFullYear();
+
+  const handleLogoClick = () => {
+    navigate('/');
+  };
 
   return (
     <footer className="bg-gray-900 text-white py-12 relative overflow-hidden">
@@ -28,7 +36,7 @@ const Footer = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <h3 className="text-xl font-bold mb-4 flex items-center">
+              <h3 className="text-xl font-bold mb-4 flex items-center cursor-pointer" onClick={handleLogoClick}>
                 <span className="text-2xl bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-green-300 mr-2">
                  El Trapiche
                 </span>
@@ -187,18 +195,22 @@ const Footer = () => {
               className="inline-flex items-center hover:opacity-80 transition-opacity"
             >
               <img
-                src={`${import.meta.env.BASE_URL}src/assets/images/icon.png`}
+                src={codeoIcon}
                 alt="Codeo"
                 className="h-6 w-auto"
               />
             </a>
           </div>
-          {/* 
-          <div className="mt-4 text-sm flex justify-center space-x-6">
-            <a href="#" className="text-gray-500 hover:text-gray-300 transition-colors">Política de privacidad</a>
-            <a href="#" className="text-gray-500 hover:text-gray-300 transition-colors">Términos de uso</a>
-            <a href="#" className="text-gray-500 hover:text-gray-300 transition-colors">Sitios de interés</a>
-          </div>*/}
+          
+          <div className="mt-4">
+            <motion.button
+              onClick={handleLogoClick}
+              whileHover={{ scale: 1.05 }}
+              className="text-blue-400 hover:text-blue-300 transition-colors"
+            >
+              ← Volver al portal principal
+            </motion.button>
+          </div>
         </div>
       </div>
     </footer>

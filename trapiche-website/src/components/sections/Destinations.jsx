@@ -13,7 +13,7 @@ const Destinations = () => {
             descripcion: 'Majestuoso espejo de agua rodeado por cerros, miradores y un increíble sistema de puentes y murallas.',
             icono: '🌊',
             color: 'bg-blue-600',
-            categoria: 'diques' // Agregada la categoría
+            categoria: 'diques'
         },
         {
             id: 'riogrande',
@@ -21,7 +21,7 @@ const Destinations = () => {
             descripcion: 'Inaugurado en 1997, contiene las aguas del Rio Grande con miradores que brindan incomparables vistas.',
             icono: '🏞️',
             color: 'bg-emerald-600',
-            categoria: 'diques' // Agregada la categoría
+            categoria: 'diques'
         },
         {
             id: 'siete-cajones',
@@ -29,7 +29,7 @@ const Destinations = () => {
             descripcion: 'Profundos pozos entre rocas, formados por la erosión del río a través del tiempo.',
             icono: '♒',
             color: 'bg-amber-600',
-            categoria: 'naturaleza' // Agregada la categoría
+            categoria: 'naturaleza'
         },
         {
             id: 'riocito',
@@ -37,7 +37,7 @@ const Destinations = () => {
             descripcion: 'Arroyo de cálidas y cristalinas aguas que le da nombre al paraje. Zona de canteras de lajas.',
             icono: '💧',
             color: 'bg-cyan-600',
-            categoria: 'naturaleza' // Agregada la categoría
+            categoria: 'naturaleza'
         },
         {
             id: 'paso-del-rey',
@@ -45,7 +45,7 @@ const Destinations = () => {
             descripcion: 'Conserva las ruinas de la capilla más antigua de San Luis, declarada Monumento Histórico Nacional.',
             icono: '⛪',
             color: 'bg-yellow-600',
-            categoria: 'historico' // Agregada la categoría
+            categoria: 'historico'
         },
         {
             id: 'los-tapiales',
@@ -53,7 +53,7 @@ const Destinations = () => {
             descripcion: 'Monumento a Juan Pascual Pringles, héroe puntano que participó en la gesta libertadora.',
             icono: '🏛️',
             color: 'bg-red-600',
-            categoria: 'historico' // Agregada la categoría
+            categoria: 'historico'
         }
     ];
 
@@ -138,7 +138,7 @@ const Destinations = () => {
                         whileTap={{ scale: 0.95 }}
                         className="px-8 py-3 bg-trapiche-blue hover:bg-trapiche-blue-dark text-white font-medium rounded-lg shadow-lg transition-all duration-300 inline-flex items-center"
                     >
-                        <span>Explorar más destinos</span>
+                        <span>Explorá más destinos</span>
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
                             <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
                         </svg>

@@ -1,62 +1,31 @@
-// App.jsx - Incorporando elementos invernales al componente principal
-import React, { useEffect } from 'react';
-import { NavigationProvider, useNavigation } from './context/NavigationContext';
-import Header from './components/layout/Header';
-import Hero from './components/sections/Hero'; // Versión invernal
-import About from './components/sections/About';
-import Destinations from './components/sections/Destinations';
-import WinterActivities from './components/sections/Activities'; // Versión invernal
-import HowToArrive from './components/sections/HowToArrive';
-import Gallery from './components/sections/Gallery';
-import Contact from './components/sections/Contact';
-import Footer from './components/layout/Footer';
-import SeasonalBanner from './components/ui/SeasonalBanner'; // Banner invernal
-import FallingSnow from './components/ui/FallingSnow'; // Animación de nieve cayendo
-import { BrowserRouter } from 'react-router-dom';
+// App.jsx - Configuración de rutas principal
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
+import LandingPage from './components/pages/LandingPage';
+import TourismPage from './components/pages/TourismPage';
+import VecinoPage from './components/pages/VecinoPage';
+import './App.css';
 
-// Componente MainContent
-const MainContent = () => {
-  const { setActiveSection } = useNavigation();
-
-  useEffect(() => {
-    // Ajustamos el margen superior para el banner estacional
-    document.body.style.paddingTop = '46px';
-
-    const handleScroll = () => {
-      // [Código existente]
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [setActiveSection]);
-
-  return (
-    <>
-      <SeasonalBanner />
-      <Header />
-      <main>
-        <Hero />
-        <About />
-        <Destinations />
-        <WinterActivities />
-        <HowToArrive />
-        <Gallery />
-        <Contact />
-      </main>
-      <Footer />
-      <FallingSnow /> {/* Añadimos efecto global de nieve cayendo */}
-    </>
-  );
-};
-
-// Componente App
 function App() {
   return (
-    <BrowserRouter basename="/trapiche-web">
-      <NavigationProvider>
-        <MainContent />
-      </NavigationProvider>
-    </BrowserRouter>
+    <HelmetProvider>
+      <BrowserRouter>
+        <Routes>
+          {/* Página principal con opciones */}
+          <Route path="/" element={<LandingPage />} />
+          
+          {/* Página de turismo (toda la web actual) */}
+          <Route path="/turismo" element={<TourismPage />} />
+          
+          {/* Página de vecino (en construcción) */}
+          <Route path="/vecino" element={<VecinoPage />} />
+          
+          {/* Ruta de fallback - redirige a la página principal */}
+          <Route path="*" element={<LandingPage />} />
+        </Routes>
+      </BrowserRouter>
+    </HelmetProvider>
   );
 }
 

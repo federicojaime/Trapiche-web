@@ -1,11 +1,12 @@
-// Modificación de components/sections/Hero.jsx con tema invernal
+// Modificación de components/sections/Hero.jsx con tema invernal y rutas corregidas
 import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigation } from '../../context/NavigationContext';
 import WinterButton from '../ui/WinterButton';
 import FallingSnow from '../ui/FallingSnow';
+// Importa las imágenes directamente
 import heroAutumnImg from '../../assets/images/hero-autumn.jpg';
-import autumnCornerImg from '../../assets/images/autumn-corner.png';
+
 const Hero = () => {
   const { scrollToSection } = useNavigation();
   const parallaxRef = useRef(null);

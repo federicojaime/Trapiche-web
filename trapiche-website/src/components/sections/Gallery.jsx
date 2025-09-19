@@ -8,28 +8,31 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
+// IMPORTS DE IMÁGENES COMO VARIABLES
+import gallery1 from '../../assets/images/gallery/trapiche-4.jpg';
+import gallery2 from '../../assets/images/gallery/trapiche-5.jpg';
+import gallery3 from '../../assets/images/gallery/trapiche-3.jpg';
+import gallery4 from '../../assets/images/gallery/trapiche-6.jpg';
+import gallery5 from '../../assets/images/gallery/trapiche-7.jpg';
+import gallery6 from '../../assets/images/gallery/trapiche-8.jpg';
+import gallery7 from '../../assets/images/gallery/trapiche-9.jpg';
+import gallery8 from '../../assets/images/gallery/trapiche-10.jpg';
+
 const Gallery = () => {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
 
-  // En un escenario real, estas serían imágenes reales de Trapiche
+  // USANDO LAS VARIABLES IMPORTADAS
   const images = [
-
-    { src: `${import.meta.env.BASE_URL}src/assets/images/gallery/trapiche-4.jpg`, alt: 'Riocito' },
-    { src: `${import.meta.env.BASE_URL}src/assets/images/gallery/trapiche-5.jpg`, alt: 'Paso del Rey' },
-    { src: `${import.meta.env.BASE_URL}src/assets/images/gallery/trapiche-3.jpg`, alt: 'Siete Cajones' },
-    { src: `${import.meta.env.BASE_URL}src/assets/images/gallery/trapiche-6.jpg`, alt: 'Los Tapiales' },
-    { src: `${import.meta.env.BASE_URL}src/assets/images/gallery/trapiche-7.jpg`, alt: 'Paisaje Serrano' },
-    { src: `${import.meta.env.BASE_URL}src/assets/images/gallery/trapiche-8.jpg`, alt: 'Atardecer en El Trapiche' },
-    { src: `${import.meta.env.BASE_URL}src/assets/images/gallery/trapiche-9.jpg`, alt: 'Salto de agua La Negra Libre' },
-    { src: `${import.meta.env.BASE_URL}src/assets/images/gallery/trapiche-10.jpg`, alt: 'Paseo Artesanal' },
+    { src: gallery1, alt: 'Riocito' },
+    { src: gallery2, alt: 'Paso del Rey' },
+    { src: gallery3, alt: 'Siete Cajones' },
+    { src: gallery4, alt: 'Los Tapiales' },
+    { src: gallery5, alt: 'Paisaje Serrano' },
+    { src: gallery6, alt: 'Atardecer en El Trapiche' },
+    { src: gallery7, alt: 'Salto de agua La Negra Libre' },
+    { src: gallery8, alt: 'Paseo Artesanal' },
   ];
-
-  // Para desarrollo, usamos imágenes de placeholder
-  const tempImages = Array(8).fill(null).map((_, i) => ({
-    src: `${images[i].src}`,
-    alt: `${images[i].alt}`
-  }));
 
   const openLightbox = (index) => {
     setSelectedImage(index);
@@ -65,7 +68,7 @@ const Gallery = () => {
             autoplay={{ delay: 3000 }}
             className="rounded-xl overflow-hidden"
           >
-            {tempImages.map((image, index) => (
+            {images.map((image, index) => (
               <SwiperSlide key={index}>
                 <img
                   src={image.src}
@@ -83,7 +86,7 @@ const Gallery = () => {
 
         {/* Grid para escritorio */}
         <div className="hidden md:grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {tempImages.map((image, index) => (
+          {images.map((image, index) => (
             <div key={index} onClick={() => openLightbox(index)}>
               <AnimatedImage
                 src={image.src}
@@ -93,19 +96,6 @@ const Gallery = () => {
             </div>
           ))}
         </div>
-        {/* 
-        <div className="text-center mt-12">
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="px-6 py-3 bg-trapiche-blue hover:bg-trapiche-blue-dark text-white font-medium rounded-lg shadow-lg transition-all duration-300 inline-flex items-center"
-          >
-            <span>Ver todas las fotos</span>
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
-              <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
-            </svg>
-          </motion.button>
-        </div>*/}
       </div>
 
       {/* Lightbox */}
@@ -129,20 +119,20 @@ const Gallery = () => {
           <motion.img
             initial={{ scale: 0.8 }}
             animate={{ scale: 1 }}
-            src={tempImages[selectedImage].src}
-            alt={tempImages[selectedImage].alt}
+            src={images[selectedImage].src}
+            alt={images[selectedImage].alt}
             className="max-w-full max-h-[80vh] object-contain"
           />
 
           <div className="absolute bottom-6 left-0 right-0 text-center text-white">
-            <p className="text-lg font-medium">{tempImages[selectedImage].alt}</p>
+            <p className="text-lg font-medium">{images[selectedImage].alt}</p>
           </div>
 
           <button
             className="absolute left-6 top-1/2 transform -translate-y-1/2 text-white"
             onClick={(e) => {
               e.stopPropagation();
-              setSelectedImage(selectedImage === 0 ? tempImages.length - 1 : selectedImage - 1);
+              setSelectedImage(selectedImage === 0 ? images.length - 1 : selectedImage - 1);
             }}
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -154,7 +144,7 @@ const Gallery = () => {
             className="absolute right-6 top-1/2 transform -translate-y-1/2 text-white"
             onClick={(e) => {
               e.stopPropagation();
-              setSelectedImage(selectedImage === tempImages.length - 1 ? 0 : selectedImage + 1);
+              setSelectedImage(selectedImage === images.length - 1 ? 0 : selectedImage + 1);
             }}
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">

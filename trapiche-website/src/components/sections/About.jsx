@@ -1,6 +1,8 @@
 // components/sections/About.jsx
 import React from 'react';
 import { motion } from 'framer-motion';
+// IMPORT DE IMAGEN COMO VARIABLE
+import panoramicaImage from '../../assets/images/panoramica.jpg';
 
 const About = () => {
     return (
@@ -70,7 +72,7 @@ const About = () => {
                         <div className="relative">
                             <div className="absolute -top-5 -left-5 w-full h-full border-2 border-trapiche-blue rounded-xl"></div>
                             <img
-                                src={`${import.meta.env.BASE_URL}src/assets/images/panoramica.jpg`} 
+                                src={panoramicaImage}
                                 alt="Vista panorámica de El Trapiche"
                                 className="w-full h-auto rounded-xl shadow-xl relative z-10"
                             />
@@ -89,41 +91,7 @@ const About = () => {
                     </motion.div>
                 </div>
 
-
                 <div className="mt-20 item-center">
-                    {/*  Estadísticas  <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6 }}
-                        className="bg-gray-50 p-6 rounded-lg shadow-sm text-center"
-                    >
-                        <span className="text-3xl md:text-4xl font-bold text--blue">+500</span>
-                        <p className="text-gray-600 mt-2">Visitantes mensuales</p>
-                    </motion.div>
-
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6, delay: 0.1 }}
-                        className="bg-gray-50 p-6 rounded-lg shadow-sm text-center"
-                    >
-                        <span className="text-3xl md:text-4xl font-bold text-trapiche-blue">6</span>
-                        <p className="text-gray-600 mt-2">Destinos principales</p>
-                    </motion.div>
-
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6, delay: 0.2 }}
-                        className="bg-gray-50 p-6 rounded-lg shadow-sm text-center"
-                    >
-                        <span className="text-3xl md:text-4xl font-bold text-trapiche-blue">12</span>
-                        <p className="text-gray-600 mt-2">Actividades disponibles</p>
-                    </motion.div>
-*/}
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
