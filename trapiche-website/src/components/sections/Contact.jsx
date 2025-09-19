@@ -65,7 +65,7 @@ const Contact = () => {
                             </div>
                             <h3 className="text-xl font-bold mb-2 text-gray-800">Teléfono</h3>
                             <p className="text-gray-600 mb-3">Lunes a viernes</p>
-                            <p className="text-orange-600 font-semibold">2664452000</p>
+                            <p className="text-orange-600 font-semibold">2664891372</p>
                         </motion.div>
 
                         <motion.div
@@ -82,7 +82,7 @@ const Contact = () => {
                             </div>
                             <h3 className="text-xl font-bold mb-2 text-gray-800">Email</h3>
                             <p className="text-gray-600 mb-3">Información detallada</p>
-                            <p className="text-blue-600 font-semibold">info@trapiche.tur.ar</p>
+                            <p className="text-blue-600 text-xs font-semibold">secretariadeturismoeltrapiche@gmail.com</p>
                         </motion.div>
                     </div>
 

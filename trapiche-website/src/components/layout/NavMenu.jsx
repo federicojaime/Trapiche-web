@@ -1,16 +1,13 @@
-// components/layout/NavMenu.jsx - Actualizado con navegación de eventos
+// components/layout/NavMenu.jsx - Actualizado con navegación de atractivos
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useNavigation } from '../../context/NavigationContext';
 
 const menuItems = [
-  { id: 'inicio', label: 'Inicio' },
-  { id: 'sobre-trapiche', label: 'Sobre El Trapiche' },
-  { id: 'destinos', label: 'Destinos' },
+  { id: 'atractivos', label: 'Atractivos', isPage: true },
   { id: 'alojamientos', label: 'Alojamientos', isPage: true },
-  { id: 'eventos', label: 'Eventos', isPage: true }, // Nueva opción
-  { id: 'galeria', label: 'Galería' },
+  { id: 'eventos', label: 'Eventos', isPage: true },
   { id: 'contacto', label: 'Contacto' }
 ];
 
@@ -37,13 +34,19 @@ const NavMenu = () => {
         toggleMobileMenu();
         return;
       }
+      if (id === 'atractivos') {
+        navigate('/atractivos');
+        toggleMobileMenu();
+        return;
+      }
     }
     
     // Si estamos en una página separada, navegar a home y luego hacer scroll
-    if (location.pathname === '/contacto' || location.pathname === '/alojamientos' || location.pathname === '/eventos') {
+    if (location.pathname === '/contacto' || location.pathname === '/alojamientos' || location.pathname === '/eventos' || location.pathname === '/atractivos') {
       if ((id === 'contacto' && location.pathname === '/contacto') ||
           (id === 'alojamientos' && location.pathname === '/alojamientos') ||
-          (id === 'eventos' && location.pathname === '/eventos')) {
+          (id === 'eventos' && location.pathname === '/eventos') ||
+          (id === 'atractivos' && location.pathname === '/atractivos')) {
         // Si ya estamos en la página y clickeamos la misma opción, solo cerramos el menú
         toggleMobileMenu();
         return;
@@ -76,7 +79,8 @@ const NavMenu = () => {
               (activeSection === item.id && location.pathname === '/') || 
               (item.id === 'contacto' && location.pathname === '/contacto') ||
               (item.id === 'alojamientos' && location.pathname === '/alojamientos') ||
-              (item.id === 'eventos' && location.pathname === '/eventos')
+              (item.id === 'eventos' && location.pathname === '/eventos') ||
+              (item.id === 'atractivos' && location.pathname === '/atractivos')
                 ? activeColorClass 
                 : textColorClass
             } hover:${scrollY > 50 ? 'text-orange-500' : 'text-white'}`}
@@ -129,7 +133,8 @@ const NavMenu = () => {
                     (activeSection === item.id && location.pathname === '/') || 
                     (item.id === 'contacto' && location.pathname === '/contacto') ||
                     (item.id === 'alojamientos' && location.pathname === '/alojamientos') ||
-                    (item.id === 'eventos' && location.pathname === '/eventos')
+                    (item.id === 'eventos' && location.pathname === '/eventos') ||
+                    (item.id === 'atractivos' && location.pathname === '/atractivos')
                       ? 'text-orange-500 font-semibold' 
                       : 'text-gray-700'
                   } hover:text-orange-500 transition-colors`}

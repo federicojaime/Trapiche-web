@@ -483,7 +483,7 @@ const TrapicheWebsite = () => {
                 </div>
                 <h3 className="text-xl font-bold mb-2">Email</h3>
                 <p className="text-gray-600 mb-4">Escríbenos con tus consultas</p>
-                <a href="mailto:info@trapiche.tur.ar" className="text-blue-600 font-medium hover:underline">info@trapiche.tur.ar</a>
+                <a href="mailto:secretariadeturismoeltrapiche@gmail.com" className="text-blue-600 font-medium hover:underline">secretariadeturismoeltrapiche@gmail.com</a>
               </motion.div>
               
               <motion.div
@@ -500,7 +500,7 @@ const TrapicheWebsite = () => {
                 </div>
                 <h3 className="text-xl font-bold mb-2">Teléfono</h3>
                 <p className="text-gray-600 mb-4">Llámanos de lunes a viernes</p>
-                <p className="text-blue-600 font-medium">2664452000</p>
+                <p className="text-blue-600 font-medium">2664891372</p>
                 <p className="text-blue-600 font-medium mt-1">WhatsApp: 2664891372</p>
               </motion.div>
               

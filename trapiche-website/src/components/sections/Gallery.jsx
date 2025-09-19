@@ -1,7 +1,6 @@
-// components/sections/Gallery.jsx
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import AnimatedImage from '../ui/AnimatedImage';
+// components/sections/Gallery.jsx - VERSIÓN MEJORADA Y ESTABILIZADA
+import React, { useState, useRef, useCallback } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
@@ -21,138 +20,320 @@ import gallery8 from '../../assets/images/gallery/trapiche-10.jpg';
 const Gallery = () => {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
+  const [filter, setFilter] = useState('all');
+  const [imagesLoaded, setImagesLoaded] = useState(false);
 
-  // USANDO LAS VARIABLES IMPORTADAS
+  // USANDO LAS VARIABLES IMPORTADAS con categorías SIMPLIFICADAS
   const images = [
-    { src: gallery1, alt: 'Riocito' },
-    { src: gallery2, alt: 'Paso del Rey' },
-    { src: gallery3, alt: 'Siete Cajones' },
-    { src: gallery4, alt: 'Los Tapiales' },
-    { src: gallery5, alt: 'Paisaje Serrano' },
-    { src: gallery6, alt: 'Atardecer en El Trapiche' },
-    { src: gallery7, alt: 'Salto de agua La Negra Libre' },
-    { src: gallery8, alt: 'Paseo Artesanal' },
+    { src: gallery1, alt: 'Riocito', category: 'naturaleza' },
+    { src: gallery2, alt: 'Paso del Rey', category: 'lugares' },
+    { src: gallery3, alt: 'Siete Cajones', category: 'naturaleza' },
+    { src: gallery4, alt: 'Los Tapiales', category: 'lugares' },
+    { src: gallery5, alt: 'Paisaje Serrano', category: 'paisajes' },
+    { src: gallery6, alt: 'Atardecer en El Trapiche', category: 'paisajes' },
+    { src: gallery7, alt: 'Salto de agua La Negra Libre', category: 'naturaleza' },
+    { src: gallery8, alt: 'Paseo Artesanal', category: 'lugares' },
   ];
 
-  const openLightbox = (index) => {
-    setSelectedImage(index);
+  const categories = [
+    { id: 'all', name: 'Todas', icon: '🌟' },
+    { id: 'naturaleza', name: 'Naturaleza', icon: '🌿' },
+    { id: 'lugares', name: 'Lugares', icon: '🏔️' },
+    { id: 'paisajes', name: 'Paisajes', icon: '🌅' }
+  ];
+
+  const filteredImages = filter === 'all' ? images : images.filter(img => img.category === filter);
+
+  const openLightbox = useCallback((index) => {
+    const actualIndex = images.findIndex(img => img === filteredImages[index]);
+    setSelectedImage(actualIndex);
     setLightboxOpen(true);
-  };
+    document.body.style.overflow = 'hidden';
+  }, [filteredImages, images]);
+
+  const closeLightbox = useCallback(() => {
+    setLightboxOpen(false);
+    setSelectedImage(null);
+    document.body.style.overflow = 'unset';
+  }, []);
+
+  const navigateLightbox = useCallback((direction) => {
+    if (direction === 'next') {
+      setSelectedImage(prev => prev === images.length - 1 ? 0 : prev + 1);
+    } else {
+      setSelectedImage(prev => prev === 0 ? images.length - 1 : prev - 1);
+    }
+  }, [images.length]);
+
+  const handleFilterChange = useCallback((newFilter) => {
+    setFilter(newFilter);
+  }, []);
 
   return (
-    <section id="galeria" className="py-20 bg-gray-50 relative">
-      <div className="container mx-auto px-6">
+    <section id="galeria" className="py-16 md:py-24 bg-gradient-to-br from-gray-50 via-white to-orange-50 relative">
+      <div className="container mx-auto px-4 md:px-6">
+
+        {/* HEADER SIMPLIFICADO */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="max-w-3xl mx-auto text-center mb-16"
+          className="text-center mb-12"
         >
-          <span className="text-trapiche-blue text-sm font-semibold uppercase tracking-wider">Imágenes</span>
-          <h2 className="text-3xl md:text-4xl font-bold mt-2 mb-6">Galería de El Trapiche</h2>
-          <div className="h-1 w-20 bg-trapiche-blue mx-auto rounded-full mb-6"></div>
-          <p className="text-lg text-gray-700">
-            Explorá la belleza de El Trapiche a través de nuestra colección de imágenes.
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">
+            Galería de El Trapiche
+          </h2>
+          <div className="h-1 w-24 bg-gradient-to-r from-orange-500 to-red-500 mx-auto mb-6"></div>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Explorá la belleza de El Trapiche a través de nuestra colección de imágenes
           </p>
         </motion.div>
 
-        {/* Carrusel para móvil */}
-        <div className="md:hidden mb-8">
+        {/* FILTROS ESTABLES */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4, delay: 0.2 }}
+          className="flex flex-wrap justify-center gap-3 mb-12"
+        >
+          {categories.map((category) => (
+            <button
+              key={category.id}
+              onClick={() => handleFilterChange(category.id)}
+              className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 flex items-center space-x-2 ${filter === category.id
+                  ? 'bg-gradient-to-r from-orange-500 to-red-600 text-white shadow-lg'
+                  : 'bg-white border border-gray-200 text-gray-700 hover:bg-orange-50 hover:border-orange-300'
+                }`}
+            >
+              <span>{category.icon}</span>
+              <span>{category.name}</span>
+            </button>
+          ))}
+        </motion.div>
+
+        {/* CARRUSEL MÓVIL SIMPLIFICADO */}
+        <div className="lg:hidden mb-8">
           <Swiper
             modules={[Navigation, Pagination, Autoplay]}
+            slidesPerView={1.2}
             spaceBetween={20}
-            slidesPerView={1}
-            navigation
-            pagination={{ clickable: true }}
-            autoplay={{ delay: 3000 }}
-            className="rounded-xl overflow-hidden"
+            centeredSlides={true}
+            breakpoints={{
+              640: {
+                slidesPerView: 1.8,
+                spaceBetween: 30,
+              },
+              768: {
+                slidesPerView: 2.2,
+                spaceBetween: 30,
+              },
+            }}
+            navigation={true}
+            pagination={{
+              clickable: true,
+              dynamicBullets: true
+            }}
+            autoplay={{
+              delay: 3000,
+              disableOnInteraction: false,
+              pauseOnMouseEnter: true
+            }}
+            className="gallery-swiper"
           >
-            {images.map((image, index) => (
-              <SwiperSlide key={index}>
-                <img
-                  src={image.src}
-                  alt={image.alt}
-                  className="w-full h-64 object-cover"
+            {filteredImages.map((image, index) => (
+              <SwiperSlide key={`${image.src}-${filter}`}>
+                <div
+                  className="relative group cursor-pointer overflow-hidden rounded-2xl"
                   onClick={() => openLightbox(index)}
-                />
-                <div className="absolute bottom-0 left-0 right-0 bg-black/50 text-white p-3">
-                  <p className="text-center font-medium">{image.alt}</p>
+                >
+                  <img
+                    src={image.src}
+                    alt={image.alt}
+                    className="w-full h-64 md:h-80 object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                  />
+
+                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+                  <div className="absolute bottom-4 left-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <h3 className="text-lg font-bold">{image.alt}</h3>
+                    <p className="text-sm opacity-80">Click para ampliar</p>
+                  </div>
                 </div>
               </SwiperSlide>
             ))}
           </Swiper>
         </div>
 
-        {/* Grid para escritorio */}
-        <div className="hidden md:grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {images.map((image, index) => (
-            <div key={index} onClick={() => openLightbox(index)}>
-              <AnimatedImage
-                src={image.src}
-                alt={image.alt}
-                delay={index * 0.05}
-              />
-            </div>
-          ))}
+        {/* GRID ESCRITORIO ESTABLE */}
+        <div className="hidden lg:block">
+          <div className="grid grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-6">
+            <AnimatePresence mode="wait">
+              {filteredImages.map((image, index) => (
+                <motion.div
+                  key={`${image.src}-${filter}`}
+                  layout
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  transition={{
+                    duration: 0.4,
+                    delay: index * 0.05
+                  }}
+                  className="group cursor-pointer"
+                  onClick={() => openLightbox(index)}
+                >
+                  <div className="relative overflow-hidden rounded-2xl bg-white shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <img
+                      src={image.src}
+                      alt={image.alt}
+                      className="w-full h-64 xl:h-72 object-cover transition-transform duration-500 group-hover:scale-110"
+                      loading="lazy"
+                    />
+
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+                    <div className="absolute bottom-4 left-4 right-4 text-white transform translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300">
+                      <h3 className="text-lg font-bold mb-1">{image.alt}</h3>
+                      <div className="flex items-center space-x-2 text-sm">
+                        <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
+                        <span>Ver imagen completa</span>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          </div>
         </div>
       </div>
 
-      {/* Lightbox */}
-      {lightboxOpen && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
-          onClick={() => setLightboxOpen(false)}
-        >
-          <button
-            className="absolute top-6 right-6 text-white"
-            onClick={() => setLightboxOpen(false)}
+      {/* LIGHTBOX MEJORADO */}
+      <AnimatePresence>
+        {lightboxOpen && selectedImage !== null && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/95 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+            onClick={closeLightbox}
           >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
+            {/* Botón cerrar */}
+            <button
+              className="absolute top-4 right-4 z-60 w-10 h-10 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-colors"
+              onClick={closeLightbox}
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
 
-          <motion.img
-            initial={{ scale: 0.8 }}
-            animate={{ scale: 1 }}
-            src={images[selectedImage].src}
-            alt={images[selectedImage].alt}
-            className="max-w-full max-h-[80vh] object-contain"
-          />
+            {/* Imagen principal */}
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+              className="relative max-w-5xl max-h-[80vh]"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <img
+                src={images[selectedImage].src}
+                alt={images[selectedImage].alt}
+                className="max-w-full max-h-full object-contain rounded-lg"
+              />
 
-          <div className="absolute bottom-6 left-0 right-0 text-center text-white">
-            <p className="text-lg font-medium">{images[selectedImage].alt}</p>
-          </div>
+              {/* Información */}
+              <div className="absolute -bottom-16 left-0 right-0 text-center">
+                <div className="inline-block bg-white/20 backdrop-blur-md px-6 py-3 rounded-full">
+                  <h3 className="text-white font-semibold text-lg">{images[selectedImage].alt}</h3>
+                  <span className="text-white/80 text-sm">
+                    {selectedImage + 1} / {images.length}
+                  </span>
+                </div>
+              </div>
+            </motion.div>
 
-          <button
-            className="absolute left-6 top-1/2 transform -translate-y-1/2 text-white"
-            onClick={(e) => {
-              e.stopPropagation();
-              setSelectedImage(selectedImage === 0 ? images.length - 1 : selectedImage - 1);
-            }}
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-          </button>
+            {/* Navegación */}
+            <button
+              className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-colors"
+              onClick={(e) => {
+                e.stopPropagation();
+                navigateLightbox('prev');
+              }}
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
 
-          <button
-            className="absolute right-6 top-1/2 transform -translate-y-1/2 text-white"
-            onClick={(e) => {
-              e.stopPropagation();
-              setSelectedImage(selectedImage === images.length - 1 ? 0 : selectedImage + 1);
-            }}
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
-          </button>
-        </motion.div>
-      )}
+            <button
+              className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-colors"
+              onClick={(e) => {
+                e.stopPropagation();
+                navigateLightbox('next');
+              }}
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+
+            {/* Indicadores */}
+            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex space-x-2">
+              {images.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setSelectedImage(index);
+                  }}
+                  className={`h-2 rounded-full transition-all ${index === selectedImage
+                      ? 'bg-white w-8'
+                      : 'bg-white/50 hover:bg-white/70 w-2'
+                    }`}
+                />
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* ESTILOS OPTIMIZADOS */}
+      <style jsx>{`
+        .gallery-swiper {
+          padding: 20px 0 50px 0;
+        }
+        
+        .gallery-swiper .swiper-pagination-bullet {
+          background: rgba(249, 115, 22, 0.4);
+          opacity: 1;
+          width: 8px;
+          height: 8px;
+        }
+        
+        .gallery-swiper .swiper-pagination-bullet-active {
+          background: #f97316;
+          transform: scale(1.3);
+        }
+        
+        .gallery-swiper .swiper-button-next,
+        .gallery-swiper .swiper-button-prev {
+          color: #f97316;
+          background: rgba(255, 255, 255, 0.9);
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          margin-top: -20px;
+        }
+        
+        .gallery-swiper .swiper-button-next:after,
+        .gallery-swiper .swiper-button-prev:after {
+          font-size: 16px;
+          font-weight: bold;
+        }
+      `}</style>
     </section>
   );
 };

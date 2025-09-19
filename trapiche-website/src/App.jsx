@@ -1,4 +1,4 @@
-// App.jsx - Configuración de rutas con eventos
+// App.jsx - Configuración de rutas con atractivos
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
@@ -8,6 +8,7 @@ import VecinoPage from './components/pages/VecinoPage';
 import ContactPage from './components/pages/ContactPage';
 import AccommodationsPage from './components/pages/AccommodationsPage';
 import EventsPage from './components/pages/EventsPage';
+import AttractionsPage from './components/pages/AttractionsPage';
 import './App.css';
 
 function App() {
@@ -23,6 +24,9 @@ function App() {
           
           {/* Página de eventos */}
           <Route path="/eventos" element={<EventsPage />} />
+          
+          {/* Página de atractivos turísticos */}
+          <Route path="/atractivos" element={<AttractionsPage />} />
           
           {/* Página de contacto completa */}
           <Route path="/contacto" element={<ContactPage />} />

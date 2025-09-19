@@ -125,7 +125,7 @@ const Destinations = () => {
                     ))}
                 </motion.div>
 
-                {/* Ver más */}
+                {/* Ver más - NAVEGACIÓN A ATRACTIVOS */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -134,13 +134,14 @@ const Destinations = () => {
                     className="text-center mt-12"
                 >
                     <motion.button
-                        whileHover={{ scale: 1.05, boxShadow: "0 10px 25px -5px rgba(30, 64, 175, 0.4)" }}
+                        whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        className="px-8 py-3 bg-trapiche-blue hover:bg-trapiche-blue-dark text-white font-medium rounded-lg shadow-lg transition-all duration-300 inline-flex items-center"
+                        onClick={() => window.location.href = '/atractivos'}
+                        className="px-8 py-4 bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 inline-flex items-center"
                     >
                         <span>Explorá más destinos</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
-                            <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                        <svg className="h-5 w-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                         </svg>
                     </motion.button>
                 </motion.div>

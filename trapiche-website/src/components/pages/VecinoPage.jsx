@@ -203,7 +203,7 @@ const VecinoPage = () => {
                 </div>
                 <div>
                   <p className="text-white font-semibold text-sm md:text-base">Teléfono</p>
-                  <p className="text-blue-200 text-sm md:text-base">2664452000</p>
+                  <p className="text-blue-200 text-sm md:text-base">2664891372</p>
                 </div>
               </motion.div>
               
@@ -218,7 +218,7 @@ const VecinoPage = () => {
                 </div>
                 <div>
                   <p className="text-white font-semibold text-sm md:text-base">Email</p>
-                  <p className="text-green-200 text-sm md:text-base">info@trapiche.tur.ar</p>
+                  <p className="text-green-200 text-sm md:text-base">secretariadeturismoeltrapiche@gmail.com</p>
                 </div>
               </motion.div>
             </div>

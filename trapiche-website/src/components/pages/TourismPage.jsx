@@ -13,6 +13,8 @@ import InstagramSection from '../sections/InstagramSection';
 import Contact from '../sections/Contact';
 import Footer from '../layout/Footer';
 import BackgroundMusic from '../ui/BackgroundMusic';
+import PartnerLogosReal from '../ui/InlinePartnerLogos';
+
 import WhatsAppWidget from '../ui/WhatsAppWidget';
 
 // Componente TourismContent
@@ -62,6 +64,7 @@ const TourismContent = () => {
         <Gallery />
         <InstagramSection />
         <Contact />
+        <PartnerLogosReal />  {/* ← Acá */}
       </main>
       <Footer />
       <BackgroundMusic />

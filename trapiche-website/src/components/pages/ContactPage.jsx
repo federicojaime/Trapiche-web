@@ -54,7 +54,7 @@ const ContactContent = () => {
                                 <span className="text-white text-2xl">📞</span>
                             </div>
                             <h3 className="text-xl font-bold mb-2">Teléfono</h3>
-                            <p className="text-blue-600 font-semibold">2664452000</p>
+                            <p className="text-blue-600 font-semibold">2664891372</p>
                         </div>
 
                         <div className="bg-white p-8 rounded-xl shadow-lg">
@@ -62,7 +62,7 @@ const ContactContent = () => {
                                 <span className="text-white text-2xl">✉️</span>
                             </div>
                             <h3 className="text-xl font-bold mb-2">Email</h3>
-                            <p className="text-orange-600 font-semibold">info@trapiche.tur.ar</p>
+                            <p className="text-orange-600 font-semibold">secretariadeturismoeltrapiche@gmail.com</p>
                         </div>
                     </div>
 
