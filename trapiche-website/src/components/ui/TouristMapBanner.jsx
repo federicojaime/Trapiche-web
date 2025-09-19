@@ -56,6 +56,7 @@ const TourismContent = () => {
       <main>
         <Hero />
         <About />
+        <TouristMapBanner />
         <Destinations />
         <Activities />
         <HowToArrive />

@@ -1,4 +1,4 @@
-// App.jsx - Configuración de rutas con alojamientos y eventos
+// App.jsx - Configuración de rutas con eventos
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
