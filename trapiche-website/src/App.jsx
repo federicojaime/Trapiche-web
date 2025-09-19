@@ -1,4 +1,4 @@
-// App.jsx - Configuración de rutas con página de contacto
+// App.jsx - Configuración de rutas con alojamientos y eventos
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
@@ -6,6 +6,8 @@ import LandingPage from './components/pages/LandingPage';
 import TourismPage from './components/pages/TourismPage';
 import VecinoPage from './components/pages/VecinoPage';
 import ContactPage from './components/pages/ContactPage';
+import AccommodationsPage from './components/pages/AccommodationsPage';
+import EventsPage from './components/pages/EventsPage';
 import './App.css';
 
 function App() {
@@ -15,6 +17,12 @@ function App() {
         <Routes>
           {/* Página principal ahora es directamente turismo */}
           <Route path="/" element={<TourismPage />} />
+          
+          {/* Página de alojamientos */}
+          <Route path="/alojamientos" element={<AccommodationsPage />} />
+          
+          {/* Página de eventos */}
+          <Route path="/eventos" element={<EventsPage />} />
           
           {/* Página de contacto completa */}
           <Route path="/contacto" element={<ContactPage />} />

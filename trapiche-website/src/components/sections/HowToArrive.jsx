@@ -1,19 +1,15 @@
-// components/sections/HowToArrive.jsx
+// components/sections/HowToArrive.jsx - Con enlace actualizado a alojamientos
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 
 const HowToArrive = () => {
-  // Función para abrir WhatsApp con el lugar específico como mensaje
-  const openWhatsApp = () => {
-    // Construir el mensaje con el nombre del lugar
-    const message = `Hola, me interesa más información sobre los alojamientos en El Trapiche.`;
-    // Codificar el mensaje para URL
-    const encodedMessage = encodeURIComponent(message);
-    // Construir la URL para WhatsApp
-    const whatsappUrl = `https://wa.me/542657218215?text=${encodedMessage}`;
-    // Abrir en una nueva pestaña
-    window.open(whatsappUrl, '_blank');
+  const navigate = useNavigate();
+
+  const handleAccommodationsClick = () => {
+    navigate('/alojamientos');
   };
+
   return (
     <section id="como-llegar" className="py-20 bg-white">
       <div className="container mx-auto px-6">
@@ -85,7 +81,7 @@ const HowToArrive = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="mt-8 px-6 py-3 bg-trapiche-blue hover:bg-trapiche-blue-dark text-white font-medium rounded-lg shadow-lg transition-all duration-300 flex items-center"
-              onClick={openWhatsApp}
+              onClick={handleAccommodationsClick}
             >
               <span>Ver alojamientos</span>
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">

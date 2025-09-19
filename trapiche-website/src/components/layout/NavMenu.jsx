@@ -1,4 +1,4 @@
-// components/layout/NavMenu.jsx - Estilos corregidos con navegación desde contacto
+// components/layout/NavMenu.jsx - Actualizado con navegación de alojamientos
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate, useLocation } from 'react-router-dom';
@@ -8,6 +8,7 @@ const menuItems = [
   { id: 'inicio', label: 'Inicio' },
   { id: 'sobre-trapiche', label: 'Sobre El Trapiche' },
   { id: 'destinos', label: 'Destinos' },
+  { id: 'alojamientos', label: 'Alojamientos', isPage: true }, // Nueva opción
   { id: 'galeria', label: 'Galería' },
   { id: 'contacto', label: 'Contacto' }
 ];
@@ -20,26 +21,37 @@ const NavMenu = () => {
   const textColorClass = scrollY > 50 ? 'text-gray-700' : 'text-white';
   const activeColorClass = scrollY > 50 ? 'text-orange-500' : 'text-white font-bold';
 
-  const handleMenuClick = (sectionId) => {
+  const handleMenuClick = (item) => {
+    const { id, isPage } = item;
+    
+    // Si es una página separada, navegar directamente
+    if (isPage) {
+      if (id === 'alojamientos') {
+        navigate('/alojamientos');
+        toggleMobileMenu();
+        return;
+      }
+    }
+    
     // Si estamos en la página de contacto, navegar a home y luego hacer scroll
-    if (location.pathname === '/contacto') {
-      if (sectionId === 'contacto') {
+    if (location.pathname === '/contacto' || location.pathname === '/alojamientos') {
+      if (id === 'contacto' && location.pathname === '/contacto') {
         // Si ya estamos en contacto y clickeamos contacto, solo cerramos el menú
         toggleMobileMenu();
         return;
       }
       // Navegar a home con el hash de la sección
-      navigate(`/#${sectionId}`);
+      navigate(`/#${id}`);
       // Pequeño delay para que cargue la página y luego scroll
       setTimeout(() => {
-        const element = document.getElementById(sectionId);
+        const element = document.getElementById(id);
         if (element) {
           element.scrollIntoView({ behavior: 'smooth' });
         }
       }, 100);
     } else {
       // Si estamos en home, usar la función normal de scroll
-      scrollToSection(sectionId);
+      scrollToSection(id);
     }
   };
 
@@ -54,11 +66,12 @@ const NavMenu = () => {
             whileTap={{ scale: 0.95 }}
             className={`font-medium transition-colors text-sm lg:text-base ${
               (activeSection === item.id && location.pathname === '/') || 
-              (item.id === 'contacto' && location.pathname === '/contacto')
+              (item.id === 'contacto' && location.pathname === '/contacto') ||
+              (item.id === 'alojamientos' && location.pathname === '/alojamientos')
                 ? activeColorClass 
                 : textColorClass
             } hover:${scrollY > 50 ? 'text-orange-500' : 'text-white'}`}
-            onClick={() => handleMenuClick(item.id)}
+            onClick={() => handleMenuClick(item)}
           >
             {item.label}
           </motion.button>
@@ -105,11 +118,12 @@ const NavMenu = () => {
                   transition={{ duration: 0.2, delay: index * 0.05 }}
                   className={`font-medium text-left py-2 text-base ${
                     (activeSection === item.id && location.pathname === '/') || 
-                    (item.id === 'contacto' && location.pathname === '/contacto')
+                    (item.id === 'contacto' && location.pathname === '/contacto') ||
+                    (item.id === 'alojamientos' && location.pathname === '/alojamientos')
                       ? 'text-orange-500 font-semibold' 
                       : 'text-gray-700'
                   } hover:text-orange-500 transition-colors`}
-                  onClick={() => handleMenuClick(item.id)}
+                  onClick={() => handleMenuClick(item)}
                 >
                   {item.label}
                 </motion.button>
